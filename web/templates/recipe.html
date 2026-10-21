@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}{{ r.title }} – Recipe Book{% endblock %}
+{% block content %}
+<a href="{{ url_for('index') }}">← Back to all recipes</a>
+<article class="detail">
+  <div class="emoji big">{{ r.emoji }}</div>
+  <span class="tag">{{ r.category }}</span>
+  <h1>{{ r.title }}</h1>
+  <p class="muted">⏱ {{ r.cook_time }} min · 🍽 {{ r.servings }} servings</p>
+  <p>{{ r.description }}</p>
+  <div class="cols">
+    <section><h3>Ingredients</h3><ul>{% for i in ingredients %}<li>{{ i }}</li>{% endfor %}</ul></section>
+    <section><h3>Steps</h3><ol>{% for s in steps %}<li>{{ s }}</li>{% endfor %}</ol></section>
+  </div>
+</article>
+{% endblock %}

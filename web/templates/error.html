@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+{% if not_found %}
+<h1>404 – Not found</h1><p>This page or recipe does not exist.</p>
+{% else %}
+<h1>503 – Service unavailable</h1><p>The database is not reachable right now. Please try again later.</p>
+{% endif %}
+<a href="{{ url_for('index') }}">← Back to all recipes</a>
+{% endblock %}

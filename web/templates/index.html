@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>{% if q %}Results for “{{ q }}”{% else %}All recipes{% endif %}</h1>
+<p class="muted">{{ recipes|length }} recipe{{ '' if recipes|length == 1 else 's' }} found</p>
+{% if recipes %}
+<div class="grid">
+  {% for r in recipes %}
+  <a class="card" href="{{ url_for('recipe', recipe_id=r.id) }}">
+    <div class="emoji">{{ r.emoji }}</div>
+    <span class="tag">{{ r.category }}</span>
+    <h2>{{ r.title }}</h2>
+    <p>{{ r.description }}</p>
+    <span class="muted">⏱ {{ r.cook_time }} min</span>
+  </a>
+  {% endfor %}
+</div>
+{% else %}
+<p>No recipes match your search. <a href="{{ url_for('index') }}">Show all</a></p>
+{% endif %}
+{% endblock %}
